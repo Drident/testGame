@@ -4,6 +4,10 @@
 
   jump2 = false
   jump3 = false
+  fire = true
+
+  player2_jump2 = false
+  player2_jump3 = false
 
   canvas.width = 1820
   canvas.height = 900
@@ -25,6 +29,15 @@
     a: {
       pressed: false,
     },
+    s: {
+      pressed: false,
+    },
+    l: {
+      pressed: false,
+    },
+    j: {
+      pressed: false,
+    },
   }
 
   const background = new Sprite({
@@ -44,6 +57,8 @@
     },
   }
 const player = player1
+  player.persoAttack1 = attack1
+const playerDark = player2
   function animate() {
     window.requestAnimationFrame(animate)
     c.fillStyle = 'white'
@@ -54,8 +69,12 @@ const player = player1
     background.update()
 
     player.checkForHorizontalCanvasCollision()
+    playerDark.checkForHorizontalCanvasCollision()
+    playerDark.update()
     player.update()
 
+    c.fillStyle = 'rgba(255,0,0,0.2)'
+    c.fillRect(player.hitbox.position.x,player.hitbox.position.y,player.hitbox.width, player.hitbox.height)
     player.velocity.x = 0
     if (keys.d.pressed) {
       player.switchSprite('Run')
@@ -67,10 +86,23 @@ const player = player1
       player.velocity.x = -2
       player.lastDirection = 'left'
       player.shouldPanCameraToTheRight({canvas, camera})
-    } else if (player.velocity.y === 0) {
+    } else if(keys.s.pressed) {
+      if(fire){
+        if(player.lastDirection ==='left'){
+          player.switchSprite('Mattack1Left')
+        }
+        else{
+          player.switchSprite('Mattack1')
+        }
+        player.createAttack()
+        fire = false
+      }
+    }
+    else if (player.velocity.y === 0) {
       if (player.lastDirection === 'right') player.switchSprite('Idle')
       else player.switchSprite('IdleLeft')
     }
+
 
     if (player.velocity.y < 0) {
       player.shouldPanCameraDown({camera, canvas})
@@ -82,6 +114,36 @@ const player = player1
       else player.switchSprite('FallLeft')
     } else if (player.velocity.y === 0) {
       jump1 = true
+    }
+
+
+    player2.velocity.x = 0
+    if (keys.l.pressed) {
+      player2.switchSprite('Run')
+      player2.velocity.x = 2
+      player2.lastDirection = 'right'
+      //player2.shouldPanCameraToTheLeft({canvas, camera})
+    } else if (keys.j.pressed) {
+      player2.switchSprite('RunLeft')
+      player2.velocity.x = -2
+      player2.lastDirection = 'left'
+      //player2.shouldPanCameraToTheRight({canvas, camera})
+    } else if (player2.velocity.y === 0) {
+      if (player2.lastDirection === 'right') player2.switchSprite('Idle')
+      else player2.switchSprite('IdleLeft')
+    }
+
+
+    if (player2.velocity.y < 0) {
+      player2.shouldPanCameraDown({camera, canvas})
+      if (player2.lastDirection === 'right') player2.switchSprite('Jump')
+      else player2.switchSprite('JumpLeft')
+    } else if (player2.velocity.y > 0) {
+      //player2.shouldPanCameraUp({camera, canvas})
+      if (player2.lastDirection === 'right') player2.switchSprite('Fall')
+      else player2.switchSprite('FallLeft')
+    } else if (player2.velocity.y === 0) {
+      player2_jump1 = true
     }
 
     c.restore()
@@ -97,6 +159,9 @@ const player = player1
       case 'a':
         keys.a.pressed = true
         break
+      case 's':
+        keys.s.pressed = true
+        break
       case 'w':
         if (jump1) {
           player.velocity.y = -4
@@ -107,7 +172,24 @@ const player = player1
           jump2 = false
           jump3 = false
         }
+        break
 
+      case 'l':
+        keys.l.pressed = true
+        break
+      case 'j':
+        keys.j.pressed = true
+        break
+      case 'i':
+        if (player2_jump1) {
+          player2.velocity.y = -4
+          player2_jump1 = false
+          player2_jump3 = true
+        } else if (player2_jump2) {
+          player2.velocity.y = -4
+          player2_jump2 = false
+          player2_jump3 = false
+        }
         break
     }
   })
@@ -120,9 +202,25 @@ const player = player1
       case 'a':
         keys.a.pressed = false
         break
+      case 's':
+        keys.s.pressed = false
+          fire = true
+        break
       case 'w':
         if (jump3) {
           jump2 = true
+        }
+        break
+
+      case 'l':
+        keys.l.pressed = false
+        break
+      case 'j':
+        keys.j.pressed = false
+        break
+      case 'i':
+        if (player2_jump3) {
+          player2_jump2 = true
         }
         break
     }

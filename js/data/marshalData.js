@@ -4,6 +4,7 @@ const player1  = new Player({
         y: 300,
     },
     collisionBlocks,
+    life:300,
     platformCollisionBlocks,
     imageSrc: './img/marshal/sprite.png',
     frameRate: 5,
@@ -22,6 +23,11 @@ const player1  = new Player({
             imageSrc: './img/marshal/jump.png',
             frameRate: 1,
             frameBuffer: 1,
+        },
+        Mattack1: {
+            imageSrc: './img/marshal/attak1.png',
+            frameRate: 6,
+            frameBuffer: 6,
         },
         Fall: {
             imageSrc: './img/marshal/air.png',
@@ -43,10 +49,45 @@ const player1  = new Player({
             frameRate: 5,
             frameBuffer: 5,
         },
+        Mattack1Left: {
+            imageSrc: './img/marshal/attak2.png',
+            frameRate: 6,
+            frameBuffer: 5,
+        },
         JumpLeft: {
             imageSrc: './img/marshal/jump2.png',
             frameRate: 1,
             frameBuffer: 1,
+        },
+    },
+})
+
+attack1 = new Attack({
+    position: {
+        x: player1.position.x,
+        y: player1.position.y,
+    },
+    lifeTime: 500,
+    power: 50,
+    imageSrc: './img/marshal/alpha2.png',
+    speedx: 4,
+    speedy:0,
+    frameRate: 8,
+    animations: {
+        go: {
+            imageSrc: './img/marshal/Dark-fire.png',
+            frameRate: 8,
+            frameBuffer: 8,
+        },
+        explose: {
+            imageSrc: './img/marshal/alpha2.png',
+            frameRate: 9,
+            frameBuffer: 9,
+        },
+        goLeft: {
+            imageSrc: './img/marshal/Dark-fire2.png',
+            frameRate: 8,
+            frameBuffer: 8,
         },
     },
 })

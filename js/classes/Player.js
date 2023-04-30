@@ -2,8 +2,10 @@ class Player extends Sprite {
   constructor({
     position,
     collisionBlocks,
+    life,
     platformCollisionBlocks,
     imageSrc,
+    persoAttack1,
     frameRate,
     scale = 0.5,
     animations,
@@ -12,20 +14,22 @@ class Player extends Sprite {
     this.position = position
     this.velocity = {
       x: 0,
-      y: 1,
+      y: 3,
     }
 
     this.collisionBlocks = collisionBlocks
     this.platformCollisionBlocks = platformCollisionBlocks
+    this.life = life
+    this.persoAttack1 = persoAttack1
     this.hitbox = {
       position: {
         x: this.position.x,
         y: this.position.y,
       },
-      width: 10,
-      height: 10,
+      width: 50,
+      height: 50,
     }
-
+    this.attaks1 = []
     this.animations = animations
     this.lastDirection = 'right'
 
@@ -35,7 +39,6 @@ class Player extends Sprite {
 
       this.animations[key].image = image
     }
-
     this.camerabox = {
       position: {
         x: this.position.x,
@@ -122,6 +125,47 @@ class Player extends Sprite {
     }
   }
 
+  createAttack(){
+    this.attaks1.push(new Attack({
+      position: {
+        x: player1.position.x,
+        y: player1.position.y-25,
+      },
+      lifeTime: 800,
+      power: 50,
+      height2: 45,
+      width2: 60,
+      imageSrc: './img/marshal/alpha2.png',
+      speedx: 6,
+      speedy:0,
+      frameRate: 8,
+      animations: {
+        go: {
+          imageSrc: './img/marshal/Dark-fire.png',
+          frameRate: 8,
+          frameBuffer: 8,
+        },
+        explose: {
+          imageSrc: './img/marshal/alpha2.png',
+          frameRate: 9,
+          frameBuffer: 9,
+        },
+        goLeft: {
+          imageSrc: './img/marshal/Dark-fire2.png',
+          frameRate: 8,
+          frameBuffer: 8,
+        },
+      },
+    }))
+    if(this.lastDirection === 'right'){
+      this.attaks1[this.attaks1.length-1].switchSprites('go')
+    }
+    else{
+      this.attaks1[this.attaks1.length-1].switchSprites('goLeft')
+      this.attaks1[this.attaks1.length-1].velocity.x = -6
+    }
+}
+
   update() {
     this.updateFrames()
     this.updateHitbox()
@@ -133,17 +177,31 @@ class Player extends Sprite {
     this.applyGravity()
     this.updateHitbox()
     this.checkForVerticalCollisions()
+    this.updateAttack()
   }
 
   updateHitbox() {
     this.hitbox = {
+      //decor
       position: {
-        x: this.position.x + 10,
-        y: this.position.y + 26,
+        x: this.position.x ,
+        y: this.position.y ,
       },
-      width: 5,
-      height: 7,
+      width: 24,
+      height: 33,
     }
+  }
+  updateAttack(){
+    this.attaks1.forEach(attack => {
+      attack.update();
+      if(attack.lifeTime === 0){
+        this.attaks1.splice(0,1)
+      }
+      else if(attack.lifeTime === 650){
+        attack.velocity.x = 0
+        attack.switchSprites('explose')
+      }
+    })
   }
 
   checkForHorizontalCollisions() {
