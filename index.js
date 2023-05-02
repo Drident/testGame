@@ -4,7 +4,9 @@
 
   jump2 = false
   jump3 = false
+
   fire = true
+  darkFire = true
 
   player2_jump2 = false
   player2_jump3 = false
@@ -38,6 +40,9 @@
     j: {
       pressed: false,
     },
+    k: {
+      pressed: false,
+    },
   }
 
   const background = new Sprite({
@@ -53,7 +58,7 @@
   const camera = {
     position: {
       x: 0,
-      y: -backgroundImageHeight + scaledCanvas.height,
+      y:   scaledCanvas.height-backgroundImageHeight+150,
     },
   }
 const player = player1
@@ -64,7 +69,7 @@ const playerDark = player2
     c.fillStyle = 'white'
     c.fillRect(0, 0, canvas.width, canvas.height)
     c.save()
-    c.scale(4, 4)
+    c.scale(3.2, 3)
     c.translate(camera.position.x, camera.position.y)
     background.update()
 
@@ -75,17 +80,19 @@ const playerDark = player2
 
     c.fillStyle = 'rgba(255,0,0,0.2)'
     c.fillRect(player.hitbox.position.x,player.hitbox.position.y,player.hitbox.width, player.hitbox.height)
+    c.fillStyle = 'rgba(255,0,0,0.2)'
+    c.fillRect(player2.hitbox.position.x,player2.hitbox.position.y,player2.hitbox.width, player2.hitbox.height)
     player.velocity.x = 0
     if (keys.d.pressed) {
       player.switchSprite('Run')
       player.velocity.x = 2
       player.lastDirection = 'right'
-      player.shouldPanCameraToTheLeft({canvas, camera})
+      //player.shouldPanCameraToTheLeft({canvas, camera})
     } else if (keys.a.pressed) {
       player.switchSprite('RunLeft')
       player.velocity.x = -2
       player.lastDirection = 'left'
-      player.shouldPanCameraToTheRight({canvas, camera})
+      //player.shouldPanCameraToTheRight({canvas, camera})
     } else if(keys.s.pressed) {
       if(fire){
         if(player.lastDirection ==='left'){
@@ -105,7 +112,7 @@ const playerDark = player2
 
 
     if (player.velocity.y < 0) {
-      player.shouldPanCameraDown({camera, canvas})
+      player.shouldPanCameraDown({canvas, camera})
       if (player.lastDirection === 'right') player.switchSprite('Jump')
       else player.switchSprite('JumpLeft')
     } else if (player.velocity.y > 0) {
@@ -128,14 +135,25 @@ const playerDark = player2
       player2.velocity.x = -2
       player2.lastDirection = 'left'
       //player2.shouldPanCameraToTheRight({canvas, camera})
-    } else if (player2.velocity.y === 0) {
+    }else if(keys.k.pressed) {
+      if(darkFire){
+        if(player2.lastDirection ==='left'){
+          player2.switchSprite('Mattack1Left')
+        }
+        else{
+          player2.switchSprite('Mattack1')
+        }
+        player2.createAttack()
+        darkFire = false
+      }
+    }else if (player2.velocity.y === 0) {
       if (player2.lastDirection === 'right') player2.switchSprite('Idle')
       else player2.switchSprite('IdleLeft')
     }
 
 
     if (player2.velocity.y < 0) {
-      player2.shouldPanCameraDown({camera, canvas})
+      //player2.shouldPanCameraDown({camera, canvas})
       if (player2.lastDirection === 'right') player2.switchSprite('Jump')
       else player2.switchSprite('JumpLeft')
     } else if (player2.velocity.y > 0) {
@@ -145,6 +163,40 @@ const playerDark = player2
     } else if (player2.velocity.y === 0) {
       player2_jump1 = true
     }
+    player.attaks1.forEach(attack =>{
+        if(((attack.hitbox.position.x+attack.hitbox.width)>player2.hitbox.position.x)&&(attack.hitbox.position.x<=player2.position.x)||
+            ((attack.hitbox.position.x+attack.hitbox.width)>(player2.hitbox.position.x+player2.hitbox.width))&&
+              (attack.hitbox.position.x<=(player2.hitbox.position.x+player2.hitbox.width))){
+          if(((attack.hitbox.position.y-attack.hitbox.height)<player2.hitbox.position.y)&&(attack.hitbox.position.y>=player2.position.y)||
+              ((attack.hitbox.position.y-attack.hitbox.height)<(player2.hitbox.position.y-player2.hitbox.height))&&
+                (attack.hitbox.position.y>=(player2.hitbox.position.y+player2.hitbox.height))){
+            if(attack.lifeTime>=650&&!attack.hit){
+              attack.lifeTime = 640
+              attack.hit = true
+              player2.life = player2.life-20
+              player2.velocity.x = 20
+              player2.velocity.y = -2
+            }
+          }
+        }
+  })
+    player2.attaks1.forEach(attack =>{
+      if(((attack.hitbox.position.x+attack.hitbox.width)>player.hitbox.position.x)&&(attack.hitbox.position.x<=player.position.x)||
+          ((attack.hitbox.position.x+attack.hitbox.width)>(player.hitbox.position.x+player.hitbox.width))&&
+          (attack.hitbox.position.x<=(player.hitbox.position.x+player.hitbox.width))){
+        if(((attack.hitbox.position.y-attack.hitbox.height)<player.hitbox.position.y)&&(attack.hitbox.position.y>=player.position.y)||
+            ((attack.hitbox.position.y-attack.hitbox.height)<(player.hitbox.position.y-player.hitbox.height))&&
+            (attack.hitbox.position.y>=(player.hitbox.position.y+player.hitbox.height))){
+          if(attack.lifeTime>=650&&!attack.hit){
+            attack.lifeTime = 640
+            attack.hit = true
+            player.life = player2.life-20
+            player.velocity.x = 20
+            player.velocity.y = -2
+          }
+        }
+      }
+    })
 
     c.restore()
   }
@@ -179,6 +231,9 @@ const playerDark = player2
         break
       case 'j':
         keys.j.pressed = true
+        break
+      case 'k':
+        keys.k.pressed = true
         break
       case 'i':
         if (player2_jump1) {
@@ -217,6 +272,10 @@ const playerDark = player2
         break
       case 'j':
         keys.j.pressed = false
+        break
+      case 'k':
+        keys.k.pressed = false
+        darkFire = true
         break
       case 'i':
         if (player2_jump3) {

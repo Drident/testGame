@@ -5,6 +5,7 @@ const player1  = new Player({
     },
     collisionBlocks,
     life:300,
+    perso:1,
     platformCollisionBlocks,
     imageSrc: './img/marshal/sprite.png',
     frameRate: 5,
@@ -64,13 +65,17 @@ const player1  = new Player({
 
 attack1 = new Attack({
     position: {
-        x: player1.position.x,
-        y: player1.position.y,
+        x: player1.position.x-25,
+        y: player1.position.y-25,
     },
-    lifeTime: 500,
+    lifeTime: 900,
     power: 50,
+    height2: 45,
+    width2: 60,
+    sens: 0,
+    upSens:0,
     imageSrc: './img/marshal/alpha2.png',
-    speedx: 4,
+    speedx: 6,
     speedy:0,
     frameRate: 8,
     animations: {

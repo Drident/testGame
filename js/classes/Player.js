@@ -3,6 +3,7 @@ class Player extends Sprite {
     position,
     collisionBlocks,
     life,
+    perso,
     platformCollisionBlocks,
     imageSrc,
     persoAttack1,
@@ -20,6 +21,7 @@ class Player extends Sprite {
     this.collisionBlocks = collisionBlocks
     this.platformCollisionBlocks = platformCollisionBlocks
     this.life = life
+    this.perso = perso
     this.persoAttack1 = persoAttack1
     this.hitbox = {
       position: {
@@ -62,7 +64,7 @@ class Player extends Sprite {
     this.camerabox = {
       position: {
         x: this.position.x - 50,
-        y: this.position.y,
+        y: this.position.y-90,
       },
       width: 200,
       height: 80,
@@ -78,85 +80,96 @@ class Player extends Sprite {
     }
   }
 
-  shouldPanCameraToTheLeft({ canvas, camera }) {
+/*  shouldPanCameraToTheLeft({ canvas, camera }) {
     const cameraboxRightSide = this.camerabox.position.x + this.camerabox.width
     const scaledDownCanvasWidth = canvas.width / 4
-
     if (cameraboxRightSide >= 576) return
-
-    if (
-      cameraboxRightSide >=
-      scaledDownCanvasWidth + Math.abs(camera.position.x)
-    ) {
+    if (cameraboxRightSide >= scaledDownCanvasWidth + Math.abs(camera.position.x)){
       camera.position.x -= this.velocity.x
     }
   }
 
   shouldPanCameraToTheRight({ canvas, camera }) {
     if (this.camerabox.position.x <= 0) return
-
     if (this.camerabox.position.x <= Math.abs(camera.position.x)) {
       camera.position.x -= this.velocity.x
     }
-  }
+  }*/
 
   shouldPanCameraDown({ canvas, camera }) {
-    if (this.camerabox.position.y + this.velocity.y <= 0) return
+    if (this.camerabox.position.y+90 + this.velocity.y <= 0) return
 
-    if (this.camerabox.position.y <= Math.abs(camera.position.y)) {
+    if (this.camerabox.position.y+90 <= Math.abs(camera.position.y)) {
       camera.position.y -= this.velocity.y
     }
   }
 
   shouldPanCameraUp({ canvas, camera }) {
-    if (
-      this.camerabox.position.y + this.camerabox.height + this.velocity.y >=
-      432
-    )
-      return
-
+    if (this.camerabox.position.y + this.camerabox.height + this.velocity.y >=432) return
     const scaledCanvasHeight = canvas.height / 4
-
-    if (
-      this.camerabox.position.y + this.camerabox.height >=
-      Math.abs(camera.position.y) + scaledCanvasHeight
-    ) {
+    if (this.camerabox.position.y + this.camerabox.height >=
+      Math.abs(camera.position.y) + scaledCanvasHeight){
       camera.position.y -= this.velocity.y
     }
   }
 
   createAttack(){
-    this.attaks1.push(new Attack({
-      position: {
-        x: player1.position.x,
-        y: player1.position.y-25,
-      },
-      lifeTime: 800,
-      power: 50,
-      height2: 45,
-      width2: 60,
-      imageSrc: './img/marshal/alpha2.png',
-      speedx: 6,
-      speedy:0,
-      frameRate: 8,
-      animations: {
-        go: {
-          imageSrc: './img/marshal/Dark-fire.png',
-          frameRate: 8,
-          frameBuffer: 8,
+    if(this.perso ===1) {
+      this.attaks1.push(new Attack({
+        position: {
+          x: player1.position.x - 25,
+          y: player1.position.y - 25,
         },
-        explose: {
-          imageSrc: './img/marshal/alpha2.png',
-          frameRate: 9,
-          frameBuffer: 9,
+        lifeTime: 900,
+        power: 50,
+        height2: 45,
+        width2: 60,
+        sens: 0,
+        upSens: 0,
+        imageSrc: './img/marshal/alpha2.png',
+        speedx: 6,
+        speedy: 0,
+        frameRate: 8,
+        animations: {
+          go: {
+            imageSrc: './img/marshal/Dark-fire.png',
+            frameRate: 8,
+            frameBuffer: 8,
+          },
+          explose: {
+            imageSrc: './img/marshal/alpha2.png',
+            frameRate: 9,
+            frameBuffer: 9,
+          },
+          goLeft: {
+            imageSrc: './img/marshal/Dark-fire2.png',
+            frameRate: 8,
+            frameBuffer: 8,
+          },
         },
-        goLeft: {
-          imageSrc: './img/marshal/Dark-fire2.png',
-          frameRate: 8,
-          frameBuffer: 8,
+      }))
+    }
+    else{
+      this.attaks1.push(new Attack({position: {
+          x: player2.position.x - 25,
+          y: player2.position.y - 25,
+        }, lifeTime: 900, power: 50, height2: 45, width2: 60, sens: 0, upSens: 0, imageSrc: './img/marshal/alpha2.png', speedx: 6, speedy: 0, frameRate: 8,
+        animations: { go: {
+            imageSrc: './img/darkMarshal/teeest.png',
+            frameRate: 8,
+            frameBuffer: 8,
+          }, explose: {
+            imageSrc: './img/marshal/alpha2.png',
+            frameRate: 9,
+            frameBuffer: 9,
+          }, goLeft: {
+            imageSrc: './img/darkMarshal/teeest2.png',
+            frameRate: 8,
+            frameBuffer: 8,
+          },
         },
-      },
-    }))
+      }))
+    }
     if(this.lastDirection === 'right'){
       this.attaks1[this.attaks1.length-1].switchSprites('go')
     }
@@ -178,11 +191,17 @@ class Player extends Sprite {
     this.updateHitbox()
     this.checkForVerticalCollisions()
     this.updateAttack()
+    this.updateLife()
+  }
+  updateLife(){
+    c.fillStyle = 'rgba(255,0,0)'
+    c.fillRect(this.hitbox.position.x+5,this.hitbox.position.y-4,15,3)
+    c.fillStyle = 'rgba(0,255,0)'
+    c.fillRect(this.hitbox.position.x+5,this.hitbox.position.y-4,(15/300)*this.life,3)
   }
 
   updateHitbox() {
     this.hitbox = {
-      //decor
       position: {
         x: this.position.x ,
         y: this.position.y ,
@@ -197,7 +216,7 @@ class Player extends Sprite {
       if(attack.lifeTime === 0){
         this.attaks1.splice(0,1)
       }
-      else if(attack.lifeTime === 650){
+      else if(attack.lifeTime <= 650&& attack.velocity.x !==0){
         attack.velocity.x = 0
         attack.switchSprites('explose')
       }
