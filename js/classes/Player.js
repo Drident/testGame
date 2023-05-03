@@ -58,6 +58,8 @@ class Player extends Sprite {
     this.image = this.animations[key].image
     this.frameBuffer = this.animations[key].frameBuffer
     this.frameRate = this.animations[key].frameRate
+
+
   }
 
   updateCamerabox() {
@@ -178,6 +180,7 @@ class Player extends Sprite {
       this.attaks1[this.attaks1.length-1].velocity.x = -6
     }
 }
+
 
   update() {
     this.updateFrames()
@@ -314,5 +317,13 @@ class Player extends Sprite {
         }
       }
     }
+  }
+  restart(){
+    this.velocity.x = 0
+    this.velocity.y = 0
+    this.life = 300
+    this.attaks1.forEach(attack => {
+      this.attaks1.splice(0,1)
+    })
   }
 }

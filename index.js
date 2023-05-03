@@ -2,6 +2,8 @@
   const canvas = document.querySelector('canvas')
   const c = canvas.getContext('2d')
 
+  let game_on = true
+
   jump2 = false
   jump3 = false
 
@@ -72,132 +74,198 @@ const playerDark = player2
     c.scale(3.2, 3)
     c.translate(camera.position.x, camera.position.y)
     background.update()
-
-    player.checkForHorizontalCanvasCollision()
-    playerDark.checkForHorizontalCanvasCollision()
-    playerDark.update()
-    player.update()
-
-    c.fillStyle = 'rgba(255,0,0,0.2)'
-    c.fillRect(player.hitbox.position.x,player.hitbox.position.y,player.hitbox.width, player.hitbox.height)
-    c.fillStyle = 'rgba(255,0,0,0.2)'
-    c.fillRect(player2.hitbox.position.x,player2.hitbox.position.y,player2.hitbox.width, player2.hitbox.height)
-    player.velocity.x = 0
-    if (keys.d.pressed) {
-      player.switchSprite('Run')
-      player.velocity.x = 2
-      player.lastDirection = 'right'
-      //player.shouldPanCameraToTheLeft({canvas, camera})
-    } else if (keys.a.pressed) {
-      player.switchSprite('RunLeft')
-      player.velocity.x = -2
-      player.lastDirection = 'left'
-      //player.shouldPanCameraToTheRight({canvas, camera})
-    } else if(keys.s.pressed) {
-      if(fire){
-        if(player.lastDirection ==='left'){
-          player.switchSprite('Mattack1Left')
+    if (game_on) {
+      player.checkForHorizontalCanvasCollision()
+      playerDark.checkForHorizontalCanvasCollision()
+      playerDark.update()
+      player.update()
+      player.width=24
+      player2.width=24
+      c.fillStyle = 'rgba(255,0,0,0.2)'
+      c.fillRect(player.hitbox.position.x, player.hitbox.position.y, player.hitbox.width, player.hitbox.height)
+      c.fillStyle = 'rgba(255,0,0,0.2)'
+      c.fillRect(player2.hitbox.position.x, player2.hitbox.position.y, player2.hitbox.width, player2.hitbox.height)
+      player.velocity.x = 0
+      if (keys.d.pressed) {
+        if(keys.s.pressed && (player.velocity.y !== 0)){
+          player.switchSprite('go')
+          player.velocity.x = 9
+          player.width = 50
         }
         else{
-          player.switchSprite('Mattack1')
+          player.switchSprite('Run')
+          player.velocity.x = 2
+          player.width = 35
         }
-        player.createAttack()
-        fire = false
+        player.lastDirection = 'right'
+        //player.shouldPanCameraToTheLeft({canvas, camera})
+      } else if (keys.a.pressed) {
+        if(keys.s.pressed && (player.velocity.y !== 0)){
+          player.switchSprite('goLeft')
+          player.velocity.x = -9
+          player.width = 50
+        }
+        else {
+          player.switchSprite('RunLeft')
+          player.velocity.x = -2
+          player.width = 35
+          player.lastDirection = 'left'
+          //player.shouldPanCameraToTheRight({canvas, camera})
+        }
+      } else if (keys.s.pressed) {
+        if (fire) {
+          if (player.lastDirection === 'left') {
+            player.switchSprite('Mattack1Left')
+          } else {
+            player.switchSprite('Mattack1')
+          }
+          player.createAttack()
+          fire = false
+        }
+        player.width=45
+
+      } else if (player.velocity.y === 0) {
+        if (player.lastDirection === 'right') player.switchSprite('Idle')
+        else player.switchSprite('IdleLeft')
       }
-    }
-    else if (player.velocity.y === 0) {
-      if (player.lastDirection === 'right') player.switchSprite('Idle')
-      else player.switchSprite('IdleLeft')
-    }
 
 
-    if (player.velocity.y < 0) {
-      player.shouldPanCameraDown({canvas, camera})
-      if (player.lastDirection === 'right') player.switchSprite('Jump')
-      else player.switchSprite('JumpLeft')
-    } else if (player.velocity.y > 0) {
-      player.shouldPanCameraUp({camera, canvas})
-      if (player.lastDirection === 'right') player.switchSprite('Fall')
-      else player.switchSprite('FallLeft')
-    } else if (player.velocity.y === 0) {
-      jump1 = true
-    }
+      if (player.velocity.y < 0) {
+        if(!keys.s.pressed)player.width=24
+        player.shouldPanCameraDown({canvas, camera})
+        if (player.lastDirection === 'right') player.switchSprite('Jump')
+        else player.switchSprite('JumpLeft')
+      } else if (player.velocity.y > 0) {
+        if(!keys.s.pressed)player.width=24
+        player.shouldPanCameraUp({camera, canvas})
+        if (player.lastDirection === 'right' && !keys.s.pressed) player.switchSprite('Fall')
+        else if(!keys.s.pressed) player.switchSprite('FallLeft')
+      } else if (player.velocity.y === 0) {
+        jump1 = true
+      }
 
 
-    player2.velocity.x = 0
-    if (keys.l.pressed) {
-      player2.switchSprite('Run')
-      player2.velocity.x = 2
-      player2.lastDirection = 'right'
-      //player2.shouldPanCameraToTheLeft({canvas, camera})
-    } else if (keys.j.pressed) {
-      player2.switchSprite('RunLeft')
-      player2.velocity.x = -2
-      player2.lastDirection = 'left'
-      //player2.shouldPanCameraToTheRight({canvas, camera})
-    }else if(keys.k.pressed) {
-      if(darkFire){
-        if(player2.lastDirection ==='left'){
-          player2.switchSprite('Mattack1Left')
+      player2.velocity.x = 0
+      if (keys.l.pressed) {
+        if(keys.k.pressed && (player2.velocity.y !== 0)){
+          player2.switchSprite('go')
+          player2.velocity.x = 9
+          player2.width = 50
         }
         else{
-          player2.switchSprite('Mattack1')
+          player2.switchSprite('Run')
+          player2.velocity.x = 2
+          player2.width = 35
         }
-        player2.createAttack()
-        darkFire = false
+        player2.lastDirection = 'right'
+        //player.shouldPanCameraToTheLeft({canvas, camera})
+      } else if (keys.j.pressed) {
+        if(keys.k.pressed && (player2.velocity.y !== 0)){
+          player2.switchSprite('goLeft')
+          player2.velocity.x = -9
+          player2.width = 50
+        }
+        else {
+          player2.switchSprite('RunLeft')
+          player2.velocity.x = -2
+          player2.width = 35
+          player2.lastDirection = 'left'
+          //player.shouldPanCameraToTheRight({canvas, camera})
+        }
+      } else if (keys.k.pressed) {
+        if (darkFire) {
+          if (player2.lastDirection === 'left') {
+            player2.switchSprite('Mattack1Left')
+          } else {
+            player2.switchSprite('Mattack1')
+          }
+          player2.createAttack()
+          darkFire = false
+        }
+        player2.width=45
+
+      } else if (player2.velocity.y === 0) {
+        if (player2.lastDirection === 'right') player2.switchSprite('Idle')
+        else player2.switchSprite('IdleLeft')
       }
-    }else if (player2.velocity.y === 0) {
-      if (player2.lastDirection === 'right') player2.switchSprite('Idle')
-      else player2.switchSprite('IdleLeft')
-    }
 
 
-    if (player2.velocity.y < 0) {
-      //player2.shouldPanCameraDown({camera, canvas})
-      if (player2.lastDirection === 'right') player2.switchSprite('Jump')
-      else player2.switchSprite('JumpLeft')
-    } else if (player2.velocity.y > 0) {
-      //player2.shouldPanCameraUp({camera, canvas})
-      if (player2.lastDirection === 'right') player2.switchSprite('Fall')
-      else player2.switchSprite('FallLeft')
-    } else if (player2.velocity.y === 0) {
-      player2_jump1 = true
-    }
-    player.attaks1.forEach(attack =>{
-        if(((attack.hitbox.position.x+attack.hitbox.width)>player2.hitbox.position.x)&&(attack.hitbox.position.x<=player2.position.x)||
-            ((attack.hitbox.position.x+attack.hitbox.width)>(player2.hitbox.position.x+player2.hitbox.width))&&
-              (attack.hitbox.position.x<=(player2.hitbox.position.x+player2.hitbox.width))){
-          if(((attack.hitbox.position.y-attack.hitbox.height)<player2.hitbox.position.y)&&(attack.hitbox.position.y>=player2.position.y)||
-              ((attack.hitbox.position.y-attack.hitbox.height)<(player2.hitbox.position.y-player2.hitbox.height))&&
-                (attack.hitbox.position.y>=(player2.hitbox.position.y+player2.hitbox.height))){
-            if(attack.lifeTime>=650&&!attack.hit){
+      if (player2.velocity.y < 0) {
+        if(!keys.k.pressed)player2.width=24
+        player2.shouldPanCameraDown({canvas, camera})
+        if (player2.lastDirection === 'right') player2.switchSprite('Jump')
+        else player2.switchSprite('JumpLeft')
+      } else if (player2.velocity.y > 0) {
+        if(!keys.k.pressed)player2.width=24
+        player2.shouldPanCameraUp({camera, canvas})
+        if (player2.lastDirection === 'right' && !keys.s.pressed) player2.switchSprite('Fall')
+        else if(!keys.k.pressed) player2.switchSprite('FallLeft')
+      } else if (player2.velocity.y === 0) {
+        player2_jump1 = true
+      }
+
+      player.attaks1.forEach(attack => {
+        if (((attack.hitbox.position.x + attack.hitbox.width) > player2.hitbox.position.x) && (attack.hitbox.position.x <= player2.position.x) ||
+            ((attack.hitbox.position.x + attack.hitbox.width) > (player2.hitbox.position.x + player2.hitbox.width)) &&
+            (attack.hitbox.position.x <= (player2.hitbox.position.x + player2.hitbox.width))) {
+          if (((attack.hitbox.position.y + attack.hitbox.height) > player2.hitbox.position.y) && (attack.hitbox.position.y <= player2.position.y) ||
+              ((attack.hitbox.position.y + attack.hitbox.height) > (player2.hitbox.position.y - player2.hitbox.height)) &&
+              (attack.hitbox.position.y <= (player2.hitbox.position.y + player2.hitbox.height))) {
+            if (attack.lifeTime >= 650 && !attack.hit) {
               attack.lifeTime = 640
               attack.hit = true
-              player2.life = player2.life-20
-              player2.velocity.x = 20
+              player2.life = player2.life - attack.power
+              if (attack.velocity.x > 0) {
+                player2.velocity.x = 20
+              } else {
+                player2.velocity.x = -20
+              }
               player2.velocity.y = -2
             }
           }
         }
-  })
-    player2.attaks1.forEach(attack =>{
-      if(((attack.hitbox.position.x+attack.hitbox.width)>player.hitbox.position.x)&&(attack.hitbox.position.x<=player.position.x)||
-          ((attack.hitbox.position.x+attack.hitbox.width)>(player.hitbox.position.x+player.hitbox.width))&&
-          (attack.hitbox.position.x<=(player.hitbox.position.x+player.hitbox.width))){
-        if(((attack.hitbox.position.y-attack.hitbox.height)<player.hitbox.position.y)&&(attack.hitbox.position.y>=player.position.y)||
-            ((attack.hitbox.position.y-attack.hitbox.height)<(player.hitbox.position.y-player.hitbox.height))&&
-            (attack.hitbox.position.y>=(player.hitbox.position.y+player.hitbox.height))){
-          if(attack.lifeTime>=650&&!attack.hit){
-            attack.lifeTime = 640
-            attack.hit = true
-            player.life = player2.life-20
-            player.velocity.x = 20
-            player.velocity.y = -2
+      })
+      player2.attaks1.forEach(attack => {
+        if (((attack.hitbox.position.x + attack.hitbox.width) > player.hitbox.position.x) && (attack.hitbox.position.x <= player.position.x) ||
+            ((attack.hitbox.position.x + attack.hitbox.width) > (player.hitbox.position.x + player.hitbox.width)) &&
+            (attack.hitbox.position.x <= (player.hitbox.position.x + player.hitbox.width))) {
+          if (((attack.hitbox.position.y + attack.hitbox.height) > player.hitbox.position.y) && (attack.hitbox.position.y <= player.position.y) ||
+              ((attack.hitbox.position.y + attack.hitbox.height) > (player.hitbox.position.y + player.hitbox.height)) &&
+              (attack.hitbox.position.y <= (player.hitbox.position.y + player.hitbox.height))) {
+            if (attack.lifeTime >= 650 && !attack.hit) {
+              attack.lifeTime = 640
+              attack.hit = true
+              player.life = player.life - 20
+              if (attack.velocity.x > 0) {
+                player.velocity.x = 20;
+              } else {
+                player.velocity.x = -20;
+              }
+              player.velocity.y = -2
+            }
           }
         }
+      })
+      if(player.life<=0 || player2.life<=0){
+        game_on = false
       }
-    })
-
+    }
+    else{
+      document.querySelector('#displayText').style.display = 'flex'
+      if (player.life > player2.life) {
+        document.querySelector('#displayText').innerHTML = 'Player 1 Wins \nPress P to \nRestart the Game'
+      } else if (player2.life > player.life) {
+        document.querySelector('#displayText').innerHTML = 'Player 2 Wins \nPress P to \nRestart the Game'
+      }
+      //player.life = 300
+      player.restart()
+      player.position.x = 100
+      player.position.y = 300
+      //player2.life = 300
+      player2.restart()
+      player2.position.x = 400
+      player2.position.y = 300
+    }
     c.restore()
   }
 
@@ -225,7 +293,13 @@ const playerDark = player2
           jump3 = false
         }
         break
+      case 'p':
+        document.querySelector('#displayText').innerHTML = ''
+        game_on = true;
+        break
+      case 'o':
 
+        break
       case 'l':
         keys.l.pressed = true
         break
@@ -259,7 +333,8 @@ const playerDark = player2
         break
       case 's':
         keys.s.pressed = false
-          fire = true
+        player.width=24
+        fire = true
         break
       case 'w':
         if (jump3) {
@@ -275,6 +350,7 @@ const playerDark = player2
         break
       case 'k':
         keys.k.pressed = false
+        player2.width=24
         darkFire = true
         break
       case 'i':

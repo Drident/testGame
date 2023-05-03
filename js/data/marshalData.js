@@ -60,6 +60,16 @@ const player1  = new Player({
             frameRate: 1,
             frameBuffer: 1,
         },
+        go: {
+            imageSrc: './img/marshal/dash1.png',
+            frameRate: 3,
+            frameBuffer: 3,
+        },
+        goLeft: {
+            imageSrc: './img/marshal/dash2.png',
+            frameRate: 3,
+            frameBuffer: 3,
+        },
     },
 })
 
@@ -93,6 +103,34 @@ attack1 = new Attack({
             imageSrc: './img/marshal/Dark-fire2.png',
             frameRate: 8,
             frameBuffer: 8,
+        },
+    },
+})
+attackDash = new Attack({
+    position: {
+        x: player1.position.x,
+        y: player1.position.y,
+    },
+    lifeTime: 0,
+    power: 50,
+    height2: player1.hitbox.height,
+    width2: player1.hitbox.width,
+    sens: 0,
+    upSens:0,
+    imageSrc: './img/marshal/dash1.png',
+    speedx: 9,
+    speedy:0,
+    frameRate: 8,
+    animations: {
+        go: {
+            imageSrc: './img/marshal/dash1.png',
+            frameRate: 3,
+            frameBuffer: 3,
+        },
+        goLeft: {
+            imageSrc: './img/marshal/dash2.png',
+            frameRate: 3,
+            frameBuffer: 3,
         },
     },
 })
