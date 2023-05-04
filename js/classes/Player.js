@@ -17,7 +17,9 @@ class Player extends Sprite {
       x: 0,
       y: 3,
     }
-
+    this.jumpSound = new Audio();
+    this.dashSound = new Audio();
+    this.deathSound= new Audio();
     this.collisionBlocks = collisionBlocks
     this.platformCollisionBlocks = platformCollisionBlocks
     this.life = life
@@ -32,6 +34,7 @@ class Player extends Sprite {
       height: 50,
     }
     this.attaks1 = []
+    this.attaks2 = []
     this.animations = animations
     this.lastDirection = 'right'
 
@@ -123,7 +126,7 @@ class Player extends Sprite {
           y: player1.position.y - 25,
         },
         lifeTime: 900,
-        power: 50,
+        power: 20,
         height2: 45,
         width2: 60,
         sens: 0,
@@ -155,7 +158,7 @@ class Player extends Sprite {
       this.attaks1.push(new Attack({position: {
           x: player2.position.x - 25,
           y: player2.position.y - 25,
-        }, lifeTime: 900, power: 50, height2: 45, width2: 60, sens: 0, upSens: 0, imageSrc: './img/marshal/alpha2.png', speedx: 6, speedy: 0, frameRate: 8,
+        }, lifeTime: 900, power: 20, height2: 45, width2: 60, sens: 0, upSens: 0, imageSrc: './img/marshal/alpha2.png', speedx: 6, speedy: 0, frameRate: 8,
         animations: { go: {
             imageSrc: './img/darkMarshal/teeest.png',
             frameRate: 8,
@@ -179,9 +182,85 @@ class Player extends Sprite {
       this.attaks1[this.attaks1.length-1].switchSprites('goLeft')
       this.attaks1[this.attaks1.length-1].velocity.x = -6
     }
+    this.attaks1[this.attaks1.length-1].playfireSound()
 }
+  createAttackFinal(){
+    this.playdeathSound()
+    if(this.perso ===1) {
+      this.attaks2.push(new Attack({
+        position: {
+          x: player1.position.x - 25,
+          y: player1.position.y,
+        },
+        lifeTime: 900,
+        power: 50,
+        height2: 45,
+        width2: 60,
+        sens: 0,
+        upSens: 0,
+        imageSrc: './img/marshal/ultima10.png',
+        speedx: 0,
+        speedy: -6,
+        frameRate: 6,
+        animations: {
+          go: {
+            imageSrc: './img/marshal/ultima10.png',
+            frameRate: 6,
+            frameBuffer: 6,
+          },
+          explose: {
+            imageSrc: './img/marshal/explosion.png',
+            frameRate: 9,
+            frameBuffer: 9,
+          },
+          goLeft: {
+            imageSrc: './img/marshal/Dark-fire2.png',
+            frameRate: 8,
+            frameBuffer: 8,
+          },
+        },
+      }))
+    }
+    else{
+      this.attaks2.push(new Attack({position: {
+          x: player2.position.x - 25,
+          y: 432,
+        }, lifeTime: 900, power: 50, height2: 45, width2: 60, sens: 0, upSens: 0, imageSrc: './img/darkMarshal/ultima5.png', speedx: 0, speedy: -6, frameRate: 6,
+        animations: { go: {
+            imageSrc: './img/darkMarshal/ultima5.png',
+            frameRate: 6,
+            frameBuffer: 6,
+          }, explose: {
+            imageSrc: './img/marshal/explosion.png',
+            frameRate: 9,
+            frameBuffer: 9,
+          }, goLeft: {
+            imageSrc: './img/darkMarshal/teeest2.png',
+            frameRate: 8,
+            frameBuffer: 8,
+          },
+        },
+      }))
+    }
+    this.attaks2[this.attaks2.length-1].switchSprites('go')
 
-
+  }
+  playjumpSound() {
+    //alert('The audio will start playing now.')
+    this.jumpSound.src = './music/jump.mp3';
+    this.jumpSound.autoplay = true;
+    //jumpSound.loop = true;
+  }
+  playdeathSound() {
+    this.deathSound.src = './music/death.mp3';
+    this.deathSound.autoplay = true;
+  }
+  playDashSound() {
+    //alert('The audio will start playing now.')
+    this.jumpSound.src = './music/DBZDash.mp3';
+    this.jumpSound.autoplay = true;
+    //jumpSound.loop = true;
+  }
   update() {
     this.updateFrames()
     this.updateHitbox()
@@ -194,6 +273,7 @@ class Player extends Sprite {
     this.updateHitbox()
     this.checkForVerticalCollisions()
     this.updateAttack()
+    this.updateAttack2()
     this.updateLife()
   }
   updateLife(){
@@ -212,6 +292,7 @@ class Player extends Sprite {
       width: 24,
       height: 33,
     }
+    //if(this.image.width>40)this.playDashSound()
   }
   updateAttack(){
     this.attaks1.forEach(attack => {
@@ -222,6 +303,22 @@ class Player extends Sprite {
       else if(attack.lifeTime <= 650&& attack.velocity.x !==0){
         attack.velocity.x = 0
         attack.switchSprites('explose')
+        attack.playexplosion1Sound()
+      }
+    })
+  }
+  updateAttack2(){
+    this.attaks2.forEach(attack => {
+      attack.update();
+      if(attack.lifeTime === 0){
+        this.attaks.splice(0,1)
+      }
+      else if(attack.lifeTime <= 650&& attack.velocity.y !==0){
+        attack.velocity.y = 0
+        attack.width = 100
+        attack.height = 100
+        attack.switchSprites('explose')
+        attack.playexplosion2Sound()
       }
     })
   }

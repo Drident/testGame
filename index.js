@@ -3,11 +3,14 @@
   const c = canvas.getContext('2d')
 
   let game_on = true
+  let playOnce1 = true
+  let playOnce2 = true
 
   jump2 = false
   jump3 = false
 
   fire = true
+  ultima = true
   darkFire = true
 
   player2_jump2 = false
@@ -34,6 +37,9 @@
       pressed: false,
     },
     s: {
+      pressed: false,
+    },
+    o: {
       pressed: false,
     },
     l: {
@@ -124,7 +130,12 @@ const playerDark = player2
         }
         player.width=45
 
-      } else if (player.velocity.y === 0) {
+      }else if(keys.o.pressed){
+        if(ultima){
+          //player.createAttackFinal()
+          //ultima = false
+        }
+      }else if (player.velocity.y === 0) {
         if (player.lastDirection === 'right') player.switchSprite('Idle')
         else player.switchSprite('IdleLeft')
       }
@@ -209,7 +220,7 @@ const playerDark = player2
             ((attack.hitbox.position.x + attack.hitbox.width) > (player2.hitbox.position.x + player2.hitbox.width)) &&
             (attack.hitbox.position.x <= (player2.hitbox.position.x + player2.hitbox.width))) {
           if (((attack.hitbox.position.y + attack.hitbox.height) > player2.hitbox.position.y) && (attack.hitbox.position.y <= player2.position.y) ||
-              ((attack.hitbox.position.y + attack.hitbox.height) > (player2.hitbox.position.y - player2.hitbox.height)) &&
+              ((attack.hitbox.position.y + attack.hitbox.height) > (player2.hitbox.position.y + player2.hitbox.height)) &&
               (attack.hitbox.position.y <= (player2.hitbox.position.y + player2.hitbox.height))) {
             if (attack.lifeTime >= 650 && !attack.hit) {
               attack.lifeTime = 640
@@ -284,10 +295,12 @@ const playerDark = player2
         break
       case 'w':
         if (jump1) {
+          player.playjumpSound()
           player.velocity.y = -4
           jump1 = false
           jump3 = true
         } else if (jump2) {
+          player.playjumpSound()
           player.velocity.y = -4
           jump2 = false
           jump3 = false
@@ -295,10 +308,11 @@ const playerDark = player2
         break
       case 'p':
         document.querySelector('#displayText').innerHTML = ''
+        functionplayAudio()
         game_on = true;
         break
       case 'o':
-
+        keys.o.pressed = true
         break
       case 'l':
         keys.l.pressed = true
@@ -312,10 +326,12 @@ const playerDark = player2
       case 'i':
         if (player2_jump1) {
           player2.velocity.y = -4
+          player2.playjumpSound()
           player2_jump1 = false
           player2_jump3 = true
         } else if (player2_jump2) {
           player2.velocity.y = -4
+          player2.playjumpSound()
           player2_jump2 = false
           player2_jump3 = false
         }
@@ -334,12 +350,17 @@ const playerDark = player2
       case 's':
         keys.s.pressed = false
         player.width=24
+        playOnce1 = true
         fire = true
         break
       case 'w':
         if (jump3) {
           jump2 = true
         }
+        break
+      case 'o':
+        keys.o.pressed = false
+        ultima = true
         break
 
       case 'l':

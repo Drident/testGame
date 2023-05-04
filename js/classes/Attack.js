@@ -23,6 +23,9 @@ class Attack extends Sprite {
             this.sens = sens
             this.hit = false;
             this.upSens = upSens
+            this.fireSound = new Audio();
+            this.explosion1Sound = new Audio();
+            this.explosion2Sound =  new Audio();
             this.velocity = {
                 x: this.speedx,
                 y: this.speedy,
@@ -47,6 +50,19 @@ class Attack extends Sprite {
 
                 this.animations[key].image = image
             }
+    }
+    playfireSound() {
+        this.fireSound.src = './music/fire.mp3';
+        this.fireSound.autoplay = true;
+    }
+    playexplosion1Sound() {
+        this.explosion1Sound.src = './music/explosion.mp3';
+        this.explosion1Sound.autoplay = true;
+    }
+
+    playexplosion2Sound() {
+        this.explosion2Sound.src = './music/explosion2.mp3';
+        this.explosion2Sound.autoplay = true;
     }
 
     switchSprites(key) {
