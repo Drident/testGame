@@ -90,8 +90,8 @@ class Attack extends Sprite {
             width: this.width2,
             height: this.height2,
         }
-        c.fillStyle = 'rgba(0,0,255,0.2)'
-        c.fillRect(this.hitbox.position.x,this.hitbox.position.y,this.width2, this.height2)
+        /*c.fillStyle = 'rgba(0,0,255,0.2)'
+        c.fillRect(this.hitbox.position.x,this.hitbox.position.y,this.width2, this.height2)*/
     }
     updateLifeTime(){
             this.lifeTime = this.lifeTime-10

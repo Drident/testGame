@@ -1,6 +1,124 @@
+var client = new Paho.MQTT.Client("mqtt-ws.sdi.hevs.ch", 80, "/ws", "chris");
 
-  const canvas = document.querySelector('canvas')
-  const c = canvas.getContext('2d')
+var buttonOne = "sdi05/D5:2F:7E:30:10:5A/button"
+var buttonTwo = "sdi05/FC:32:FA:4B:42:DE/button"
+
+var eulerOne = "sdi05/D5:2F:7E:30:10:5A/controller"
+var eulerTwo = "sdi05/FC:32:FA:4B:42:DE/controller"
+
+var left_detected = false
+var right_detected = false
+var jump_detected = false
+var fire_detected = false
+
+var client_detected = false
+client.onConnectionLost = function(responseObject) {
+  if (responseObject.errorCode !== 0) {
+    console.error("Lost connection:" + responseObject.errorMessage);
+    console.log("Connection lost.");
+  } else {
+    console.log("Connection closed.");
+  }
+  client_detected = false
+}
+client.onMessageArrived = function(message) {
+  //console.log("Got message: topic=" + message.destinationName + ', payload=' +
+  //    message.payloadString);
+  //json = JSON.parse(message.payloadString)
+  switch (message.destinationName){
+    case buttonOne:
+      if(message.payloadString=="Pressed"){
+        if(jump1) {
+          console.log("jump.");
+          player.playjumpSound()
+          player.velocity.y = -4
+          jump1 = false
+          jump3 = true
+        } else if (jump2) {
+          player.playjumpSound()
+          player.velocity.y = -4
+          jump2 = false
+          jump3 = false
+        }
+      }
+      else{
+        jump_detected = false
+        if (jump3) {
+          jump2 = true
+        }
+      }
+      break
+    case buttonTwo:
+      if(message.payloadString=="Pressed"){
+        fire_detected = true
+        keys.s.pressed = true
+      }
+      else {
+        keys.s.pressed = false
+        player.width=24
+        playOnce1 = true
+        fire = true
+      }
+      break
+    case eulerOne:
+      //console.log(JSON.parse(message.payloadString).left)
+        console.log("yes")
+      if(JSON.parse(message.payloadString).left){
+        keys.a.pressed=true
+      }
+      else  {
+        keys.a.pressed=false
+      }
+      if(JSON.parse(message.payloadString).right){
+        keys.d.pressed=true
+      }
+      else {
+        keys.d.pressed=false
+
+      }
+      break
+    case eulerTwo:
+      console.log("yes")
+      break
+    default:
+      break
+  }
+}
+client.connect({
+  userName: 'sdi05',
+  password: 'bb13ca08b476fbde0f6a0783f6632d50',
+  keepAliveInterval: 5000,
+  cleanSession: true,
+  onSuccess: function() {
+    client_detected = true
+    console.log("Connected.");
+    client.subscribe("sdi05/status");
+    client.subscribe("sdi05/+/button");$
+    client.subscribe("sdi05/+/controller");$
+    client.send('sdi05/D5:2F:7E:30:10:5A/led', JSON.stringify({
+      red: 0,
+      green: 0,
+      blue: 100
+    }));
+    client.send('sdi05/FC:32:FA:4B:42:DE/led', JSON.stringify({
+      red: 0,
+      green: 0,
+      blue: 100
+    }));
+  },
+  onFailure: function() {
+    console.error("Failed to connect.");
+    document.getElementById("log").textContent+= "Failed to connect.\n";
+  }
+});
+////////////////////////////////////////////////////////////////////////////////////
+// THYNGIES CONNECT
+//////////////////////////////////////////////////////////////
+
+
+
+const canvas = document.querySelector('canvas')
+const c = canvas.getContext('2d')
 
   let game_on = true
   let playOnce1 = true
@@ -87,10 +205,10 @@ const playerDark = player2
       player.update()
       player.width=24
       player2.width=24
-      c.fillStyle = 'rgba(255,0,0,0.2)'
+      /*c.fillStyle = 'rgba(255,0,0,0.2)'
       c.fillRect(player.hitbox.position.x, player.hitbox.position.y, player.hitbox.width, player.hitbox.height)
       c.fillStyle = 'rgba(255,0,0,0.2)'
-      c.fillRect(player2.hitbox.position.x, player2.hitbox.position.y, player2.hitbox.width, player2.hitbox.height)
+      c.fillRect(player2.hitbox.position.x, player2.hitbox.position.y, player2.hitbox.width, player2.hitbox.height)*/
       player.velocity.x = 0
       if (keys.d.pressed) {
         if(keys.s.pressed && (player.velocity.y !== 0)){

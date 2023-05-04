@@ -33,8 +33,8 @@ class Sprite {
       width: this.image.width / this.frameRate,
       height: this.image.height,
     }
-    c.fillStyle = 'rgba(0,255,0,0.4)'
-    c.fillRect(this.position.x,this.position.y,this.width, this.height)
+    /*c.fillStyle = 'rgba(0,255,0,0.4)'
+    c.fillRect(this.position.x,this.position.y,this.width, this.height)*/
     c.drawImage(
       this.image,
       cropbox.position.x,
