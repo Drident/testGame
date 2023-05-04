@@ -25,6 +25,7 @@ class Player extends Sprite {
     this.life = life
     this.perso = perso
     this.persoAttack1 = persoAttack1
+    this.fire = true
     this.hitbox = {
       position: {
         x: this.position.x,
@@ -119,70 +120,84 @@ class Player extends Sprite {
   }
 
   createAttack(){
-    if(this.perso ===1) {
-      this.attaks1.push(new Attack({
-        position: {
-          x: player1.position.x - 25,
-          y: player1.position.y - 25,
-        },
-        lifeTime: 900,
-        power: 20,
-        height2: 45,
-        width2: 60,
-        sens: 0,
-        upSens: 0,
-        imageSrc: './img/marshal/alpha2.png',
-        speedx: 6,
-        speedy: 0,
-        frameRate: 8,
-        animations: {
-          go: {
-            imageSrc: './img/marshal/Dark-fire.png',
-            frameRate: 8,
-            frameBuffer: 8,
+    if(this.fire) {
+      if (this.perso === 1) {
+        this.attaks1.push(new Attack({
+          position: {
+            x: player1.position.x - 25,
+            y: player1.position.y - 25,
           },
-          explose: {
-            imageSrc: './img/marshal/alpha2.png',
-            frameRate: 9,
-            frameBuffer: 9,
+          lifeTime: 900,
+          power: 20,
+          height2: 45,
+          width2: 60,
+          sens: 0,
+          upSens: 0,
+          imageSrc: './img/marshal/alpha2.png',
+          speedx: 6,
+          speedy: 0,
+          frameRate: 8,
+          animations: {
+            go: {
+              imageSrc: './img/marshal/Dark-fire.png',
+              frameRate: 8,
+              frameBuffer: 8,
+            },
+            explose: {
+              imageSrc: './img/marshal/alpha2.png',
+              frameRate: 9,
+              frameBuffer: 9,
+            },
+            goLeft: {
+              imageSrc: './img/marshal/Dark-fire2.png',
+              frameRate: 8,
+              frameBuffer: 8,
+            },
           },
-          goLeft: {
-            imageSrc: './img/marshal/Dark-fire2.png',
-            frameRate: 8,
-            frameBuffer: 8,
+        }))
+      } else {
+        this.attaks1.push(new Attack({
+          position: {
+            x: player2.position.x - 25,
+            y: player2.position.y - 25,
           },
-        },
-      }))
-    }
-    else{
-      this.attaks1.push(new Attack({position: {
-          x: player2.position.x - 25,
-          y: player2.position.y - 25,
-        }, lifeTime: 900, power: 20, height2: 45, width2: 60, sens: 0, upSens: 0, imageSrc: './img/marshal/alpha2.png', speedx: 6, speedy: 0, frameRate: 8,
-        animations: { go: {
-            imageSrc: './img/darkMarshal/teeest.png',
-            frameRate: 8,
-            frameBuffer: 8,
-          }, explose: {
-            imageSrc: './img/marshal/alpha2.png',
-            frameRate: 9,
-            frameBuffer: 9,
-          }, goLeft: {
-            imageSrc: './img/darkMarshal/teeest2.png',
-            frameRate: 8,
-            frameBuffer: 8,
+          lifeTime: 900,
+          power: 20,
+          height2: 45,
+          width2: 60,
+          sens: 0,
+          upSens: 0,
+          imageSrc: './img/marshal/alpha2.png',
+          speedx: 6,
+          speedy: 0,
+          frameRate: 8,
+          animations: {
+            go: {
+              imageSrc: './img/darkMarshal/teeest.png',
+              frameRate: 8,
+              frameBuffer: 8,
+            }, explose: {
+              imageSrc: './img/marshal/alpha2.png',
+              frameRate: 9,
+              frameBuffer: 9,
+            }, goLeft: {
+              imageSrc: './img/darkMarshal/teeest2.png',
+              frameRate: 8,
+              frameBuffer: 8,
+            },
           },
-        },
-      }))
+        }))
+
+      }
+      if (this.lastDirection === 'right') {
+        this.attaks1[this.attaks1.length - 1].switchSprites('go')
+      } else {
+        this.attaks1[this.attaks1.length - 1].switchSprites('goLeft')
+        this.attaks1[this.attaks1.length - 1].velocity.x = -6
+      }
+      this.attaks1[this.attaks1.length - 1].playfireSound()
+      this.fire = false
     }
-    if(this.lastDirection === 'right'){
-      this.attaks1[this.attaks1.length-1].switchSprites('go')
-    }
-    else{
-      this.attaks1[this.attaks1.length-1].switchSprites('goLeft')
-      this.attaks1[this.attaks1.length-1].velocity.x = -6
-    }
-    this.attaks1[this.attaks1.length-1].playfireSound()
 }
   createAttackFinal(){
     this.playdeathSound()
@@ -303,6 +318,7 @@ class Player extends Sprite {
       else if(attack.lifeTime <= 650&& attack.velocity.x !==0){
         attack.velocity.x = 0
         attack.switchSprites('explose')
+        this.fire = true
         attack.playexplosion1Sound()
       }
     })
