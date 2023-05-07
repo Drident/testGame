@@ -1,0 +1,145 @@
+{
+	"BUILD_DIR" : "/home/sdi05/task01/HelloBT/cmake-build-release/HelloBt_autogen",
+	"CMAKE_BINARY_DIR" : "/home/sdi05/task01/HelloBT/cmake-build-release",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/sdi05/task01/HelloBT/cmake-build-release",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/sdi05/task01/HelloBT",
+	"CMAKE_EXECUTABLE" : "/usr/bin/cmake",
+	"CMAKE_LIST_FILES" : 
+	[
+		"/home/sdi05/task01/HelloBT/CMakeLists.txt",
+		"/home/sdi05/task01/HelloBT/cmake-build-release/CMakeFiles/3.18.4/CMakeSystem.cmake",
+		"/usr/share/cmake-3.18/Modules/CMakeSystemSpecificInitialize.cmake",
+		"/home/sdi05/task01/HelloBT/cmake-build-release/CMakeFiles/3.18.4/CMakeCCompiler.cmake",
+		"/home/sdi05/task01/HelloBT/cmake-build-release/CMakeFiles/3.18.4/CMakeCXXCompiler.cmake",
+		"/usr/share/cmake-3.18/Modules/CMakeSystemSpecificInformation.cmake",
+		"/usr/share/cmake-3.18/Modules/CMakeGenericSystem.cmake",
+		"/usr/share/cmake-3.18/Modules/CMakeInitializeConfigs.cmake",
+		"/usr/share/cmake-3.18/Modules/Platform/Linux.cmake",
+		"/usr/share/cmake-3.18/Modules/Platform/UnixPaths.cmake",
+		"/usr/share/cmake-3.18/Modules/CMakeFindCodeBlocks.cmake",
+		"/usr/share/cmake-3.18/Modules/CMakeExtraGeneratorDetermineCompilerMacrosAndIncludeDirs.cmake",
+		"/usr/share/cmake-3.18/Modules/ProcessorCount.cmake",
+		"/usr/share/cmake-3.18/Modules/CMakeCInformation.cmake",
+		"/usr/share/cmake-3.18/Modules/CMakeLanguageInformation.cmake",
+		"/usr/share/cmake-3.18/Modules/Compiler/GNU-C.cmake",
+		"/usr/share/cmake-3.18/Modules/Compiler/GNU.cmake",
+		"/usr/share/cmake-3.18/Modules/Compiler/CMakeCommonCompilerMacros.cmake",
+		"/usr/share/cmake-3.18/Modules/Internal/CMakeCheckCompilerFlag.cmake",
+		"/usr/share/cmake-3.18/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake",
+		"/usr/share/cmake-3.18/Modules/Platform/Linux-GNU-C.cmake",
+		"/usr/share/cmake-3.18/Modules/Platform/Linux-GNU.cmake",
+		"/usr/share/cmake-3.18/Modules/CMakeCommonLanguageInclude.cmake",
+		"/usr/share/cmake-3.18/Modules/CMakeCXXInformation.cmake",
+		"/usr/share/cmake-3.18/Modules/CMakeLanguageInformation.cmake",
+		"/usr/share/cmake-3.18/Modules/Compiler/GNU-CXX.cmake",
+		"/usr/share/cmake-3.18/Modules/Compiler/GNU.cmake",
+		"/usr/share/cmake-3.18/Modules/Platform/Linux-GNU-CXX.cmake",
+		"/usr/share/cmake-3.18/Modules/Platform/Linux-GNU.cmake",
+		"/usr/share/cmake-3.18/Modules/CMakeCommonLanguageInclude.cmake",
+		"/usr/lib/aarch64-linux-gnu/cmake/Qt5/Qt5ConfigVersion.cmake",
+		"/usr/lib/aarch64-linux-gnu/cmake/Qt5/Qt5Config.cmake",
+		"/usr/lib/aarch64-linux-gnu/cmake/Qt5/Qt5ModuleLocation.cmake",
+		"/usr/lib/aarch64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigVersion.cmake",
+		"/usr/lib/aarch64-linux-gnu/cmake/Qt5Core/Qt5CoreConfig.cmake",
+		"/usr/lib/aarch64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigExtras.cmake",
+		"/usr/lib/aarch64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigExtrasMkspecDir.cmake",
+		"/usr/lib/aarch64-linux-gnu/cmake/Qt5Core/Qt5CoreMacros.cmake",
+		"/usr/share/cmake-3.18/Modules/CMakeParseArguments.cmake",
+		"/usr/lib/aarch64-linux-gnu/cmake/Qt5Bluetooth/Qt5BluetoothConfigVersion.cmake",
+		"/usr/lib/aarch64-linux-gnu/cmake/Qt5Bluetooth/Qt5BluetoothConfig.cmake",
+		"/usr/lib/aarch64-linux-gnu/cmake/Qt5Mqtt/Qt5MqttConfigVersion.cmake",
+		"/usr/lib/aarch64-linux-gnu/cmake/Qt5Mqtt/Qt5MqttConfig.cmake",
+		"/usr/lib/aarch64-linux-gnu/cmake/Qt5Network/Qt5NetworkConfigVersion.cmake",
+		"/usr/lib/aarch64-linux-gnu/cmake/Qt5Network/Qt5NetworkConfig.cmake",
+		"/usr/lib/aarch64-linux-gnu/cmake/Qt5Network/Qt5Network_QConnmanEnginePlugin.cmake",
+		"/usr/lib/aarch64-linux-gnu/cmake/Qt5Network/Qt5Network_QGenericEnginePlugin.cmake",
+		"/usr/lib/aarch64-linux-gnu/cmake/Qt5Network/Qt5Network_QNetworkManagerEnginePlugin.cmake",
+		"/usr/lib/aarch64-linux-gnu/cmake/Qt5Network/Qt5NetworkConfigVersion.cmake",
+		"/usr/lib/aarch64-linux-gnu/cmake/Qt5Network/Qt5NetworkConfig.cmake"
+	],
+	"CMAKE_SOURCE_DIR" : "/home/sdi05/task01/HelloBT",
+	"DEP_FILE" : "",
+	"DEP_FILE_RULE_NAME" : "",
+	"HEADERS" : 
+	[
+		[
+			"/home/sdi05/task01/HelloBT/Controller.h",
+			"Mu",
+			"EWIEGA46WW/moc_Controller.cpp"
+		],
+		[
+			"/home/sdi05/task01/HelloBT/gateway.h",
+			"Mu",
+			"EWIEGA46WW/moc_gateway.cpp"
+		],
+		[
+			"/home/sdi05/task01/HelloBT/thingy.h",
+			"Mu",
+			"EWIEGA46WW/moc_thingy.cpp"
+		]
+	],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "/home/sdi05/task01/HelloBT/cmake-build-release/HelloBt_autogen/include",
+	"MOC_COMPILATION_FILE" : "/home/sdi05/task01/HelloBT/cmake-build-release/HelloBt_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : 
+	[
+		"QT_BLUETOOTH_LIB",
+		"QT_CORE_LIB",
+		"QT_MQTT_LIB",
+		"QT_NETWORK_LIB",
+		"QT_NO_DEBUG"
+	],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"/usr/include/aarch64-linux-gnu/qt5",
+		"/usr/include/aarch64-linux-gnu/qt5/QtCore",
+		"/usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++",
+		"/usr/include/aarch64-linux-gnu/qt5/QtBluetooth",
+		"/usr/include/aarch64-linux-gnu/qt5/QtMqtt",
+		"/usr/include/aarch64-linux-gnu/qt5/QtNetwork",
+		"/usr/include/c++/10",
+		"/usr/include/aarch64-linux-gnu/c++/10",
+		"/usr/include/c++/10/backward",
+		"/usr/lib/gcc/aarch64-linux-gnu/10/include",
+		"/usr/local/include",
+		"/usr/include/aarch64-linux-gnu",
+		"/usr/include"
+	],
+	"MOC_MACRO_NAMES" : [ "Q_OBJECT", "Q_GADGET", "Q_NAMESPACE", "Q_NAMESPACE_EXPORT" ],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : false,
+	"MOC_PREDEFS_CMD" : 
+	[
+		"/usr/bin/c++",
+		"-dM",
+		"-E",
+		"-c",
+		"/usr/share/cmake-3.18/Modules/CMakeCXXCompilerABI.cpp"
+	],
+	"MOC_PREDEFS_FILE" : "/home/sdi05/task01/HelloBT/cmake-build-release/HelloBt_autogen/moc_predefs.h",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : [],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 1,
+	"PARSE_CACHE_FILE" : "/home/sdi05/task01/HelloBT/cmake-build-release/CMakeFiles/HelloBt_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "/usr/lib/qt5/bin/moc",
+	"QT_UIC_EXECUTABLE" : "",
+	"QT_VERSION_MAJOR" : 5,
+	"QT_VERSION_MINOR" : 15,
+	"SETTINGS_FILE" : "/home/sdi05/task01/HelloBT/cmake-build-release/CMakeFiles/HelloBt_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[ "/home/sdi05/task01/HelloBT/Controller.cpp", "Mu" ],
+		[ "/home/sdi05/task01/HelloBT/gateway.cpp", "Mu" ],
+		[ "/home/sdi05/task01/HelloBT/main.cpp", "Mu" ],
+		[ "/home/sdi05/task01/HelloBT/thingy.cpp", "Mu" ]
+	],
+	"VERBOSITY" : 0
+}

@@ -5,8 +5,14 @@
       <paths name="SDI05 (a7f8ab39-6b0e-4237-b9a6-329f64437f0d)">
         <serverdata>
           <mappings>
-            <mapping deploy="/tmp/HelloBT" local="$PROJECT_DIR$/HelloBT" />
+            <mapping deploy="/home/sdi05/task01" local="$PROJECT_DIR$" />
           </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/HelloBT/cmake-build-debug-sdi05" />
+            <excludedPath local="true" path="$PROJECT_DIR$/HelloBT/cmake-build-release" />
+            <excludedPath local="true" path="$PROJECT_DIR$/HelloBT/cmake-build-debug-sdi05" />
+            <excludedPath local="true" path="$PROJECT_DIR$/HelloBT/cmake-build-release" />
+          </excludedPaths>
         </serverdata>
       </paths>
     </serverData>

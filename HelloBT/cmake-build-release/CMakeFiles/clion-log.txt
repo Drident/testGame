@@ -1,0 +1,4 @@
+/usr/bin/cmake -DCMAKE_BUILD_TYPE=Release -G "CodeBlocks - Unix Makefiles" -S /home/sdi05/task01/HelloBT -B /home/sdi05/task01/HelloBT/cmake-build-release
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/sdi05/task01/HelloBT/cmake-build-release

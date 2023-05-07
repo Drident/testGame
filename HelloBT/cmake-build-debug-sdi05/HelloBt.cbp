@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="HelloBt"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\usr\;CMake Files\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\usr\lib\aarch64-linux-gnu\;CMake Files\..\..\..\..\usr\lib\aarch64-linux-gnu\cmake\;CMake Files\..\..\..\..\usr\lib\aarch64-linux-gnu\cmake\Qt5\;CMake Files\..\..\..\..\usr\lib\aarch64-linux-gnu\cmake\Qt5Core\;CMake Files\..\..\..\..\usr\lib\aarch64-linux-gnu\cmake\Qt5Bluetooth\;CMake Files\..\..\..\..\usr\lib\aarch64-linux-gnu\cmake\Qt5Mqtt\;CMake Files\..\..\..\..\usr\lib\aarch64-linux-gnu\cmake\Qt5Network\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="HelloBt">
+				<Option output="/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05/HelloBt" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DQT_CORE_LIB"/>
+					<Add option="-DQT_BLUETOOTH_LIB"/>
+					<Add option="-DQT_MQTT_LIB"/>
+					<Add option="-DQT_NETWORK_LIB"/>
+					<Add directory="/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05/HelloBt_autogen/include"/>
+					<Add directory="/usr/include/aarch64-linux-gnu/qt5"/>
+					<Add directory="/usr/include/aarch64-linux-gnu/qt5/QtCore"/>
+					<Add directory="/usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++"/>
+					<Add directory="/usr/include/aarch64-linux-gnu/qt5/QtBluetooth"/>
+					<Add directory="/usr/include/aarch64-linux-gnu/qt5/QtMqtt"/>
+					<Add directory="/usr/include/aarch64-linux-gnu/qt5/QtNetwork"/>
+					<Add directory="/usr/include/c++/10"/>
+					<Add directory="/usr/include/aarch64-linux-gnu/c++/10"/>
+					<Add directory="/usr/include/c++/10/backward"/>
+					<Add directory="/usr/lib/gcc/aarch64-linux-gnu/10/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/aarch64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05/Makefile&quot;  VERBOSE=1 HelloBt"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="HelloBt/fast">
+				<Option output="/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05/HelloBt" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DQT_CORE_LIB"/>
+					<Add option="-DQT_BLUETOOTH_LIB"/>
+					<Add option="-DQT_MQTT_LIB"/>
+					<Add option="-DQT_NETWORK_LIB"/>
+					<Add directory="/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05/HelloBt_autogen/include"/>
+					<Add directory="/usr/include/aarch64-linux-gnu/qt5"/>
+					<Add directory="/usr/include/aarch64-linux-gnu/qt5/QtCore"/>
+					<Add directory="/usr/lib/aarch64-linux-gnu/qt5/mkspecs/linux-g++"/>
+					<Add directory="/usr/include/aarch64-linux-gnu/qt5/QtBluetooth"/>
+					<Add directory="/usr/include/aarch64-linux-gnu/qt5/QtMqtt"/>
+					<Add directory="/usr/include/aarch64-linux-gnu/qt5/QtNetwork"/>
+					<Add directory="/usr/include/c++/10"/>
+					<Add directory="/usr/include/aarch64-linux-gnu/c++/10"/>
+					<Add directory="/usr/include/c++/10/backward"/>
+					<Add directory="/usr/lib/gcc/aarch64-linux-gnu/10/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/aarch64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05/Makefile&quot;  VERBOSE=1 HelloBt/fast"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="HelloBt_autogen">
+				<Option working_dir="/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05/Makefile&quot;  VERBOSE=1 HelloBt_autogen"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/sdi05/task01/HelloBT/Controller.cpp">
+			<Option target="HelloBt"/>
+		</Unit>
+		<Unit filename="/home/sdi05/task01/HelloBT/Controller.h">
+			<Option target="HelloBt"/>
+		</Unit>
+		<Unit filename="/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05/HelloBt_autogen/mocs_compilation.cpp">
+			<Option target="HelloBt"/>
+		</Unit>
+		<Unit filename="/home/sdi05/task01/HelloBT/gateway.cpp">
+			<Option target="HelloBt"/>
+		</Unit>
+		<Unit filename="/home/sdi05/task01/HelloBT/gateway.h">
+			<Option target="HelloBt"/>
+		</Unit>
+		<Unit filename="/home/sdi05/task01/HelloBT/main.cpp">
+			<Option target="HelloBt"/>
+		</Unit>
+		<Unit filename="/home/sdi05/task01/HelloBT/thingy.cpp">
+			<Option target="HelloBt"/>
+		</Unit>
+		<Unit filename="/home/sdi05/task01/HelloBT/thingy.h">
+			<Option target="HelloBt"/>
+		</Unit>
+		<Unit filename="/home/sdi05/task01/HelloBT/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/sdi05/task01/HelloBT/../../../../usr/lib/aarch64-linux-gnu/cmake/Qt5/Qt5Config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\aarch64-linux-gnu\cmake\Qt5\"/>
+		</Unit>
+		<Unit filename="/home/sdi05/task01/HelloBT/../../../../usr/lib/aarch64-linux-gnu/cmake/Qt5/Qt5ConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\aarch64-linux-gnu\cmake\Qt5\"/>
+		</Unit>
+		<Unit filename="/home/sdi05/task01/HelloBT/../../../../usr/lib/aarch64-linux-gnu/cmake/Qt5/Qt5ModuleLocation.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\aarch64-linux-gnu\cmake\Qt5\"/>
+		</Unit>
+		<Unit filename="/home/sdi05/task01/HelloBT/../../../../usr/lib/aarch64-linux-gnu/cmake/Qt5Core/Qt5CoreConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\aarch64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/home/sdi05/task01/HelloBT/../../../../usr/lib/aarch64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigExtras.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\aarch64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/home/sdi05/task01/HelloBT/../../../../usr/lib/aarch64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigExtrasMkspecDir.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\aarch64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/home/sdi05/task01/HelloBT/../../../../usr/lib/aarch64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\aarch64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/home/sdi05/task01/HelloBT/../../../../usr/lib/aarch64-linux-gnu/cmake/Qt5Core/Qt5CoreMacros.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\aarch64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/home/sdi05/task01/HelloBT/../../../../usr/lib/aarch64-linux-gnu/cmake/Qt5Bluetooth/Qt5BluetoothConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\aarch64-linux-gnu\cmake\Qt5Bluetooth\"/>
+		</Unit>
+		<Unit filename="/home/sdi05/task01/HelloBT/../../../../usr/lib/aarch64-linux-gnu/cmake/Qt5Bluetooth/Qt5BluetoothConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\aarch64-linux-gnu\cmake\Qt5Bluetooth\"/>
+		</Unit>
+		<Unit filename="/home/sdi05/task01/HelloBT/../../../../usr/lib/aarch64-linux-gnu/cmake/Qt5Mqtt/Qt5MqttConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\aarch64-linux-gnu\cmake\Qt5Mqtt\"/>
+		</Unit>
+		<Unit filename="/home/sdi05/task01/HelloBT/../../../../usr/lib/aarch64-linux-gnu/cmake/Qt5Mqtt/Qt5MqttConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\aarch64-linux-gnu\cmake\Qt5Mqtt\"/>
+		</Unit>
+		<Unit filename="/home/sdi05/task01/HelloBT/../../../../usr/lib/aarch64-linux-gnu/cmake/Qt5Network/Qt5NetworkConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\aarch64-linux-gnu\cmake\Qt5Network\"/>
+		</Unit>
+		<Unit filename="/home/sdi05/task01/HelloBT/../../../../usr/lib/aarch64-linux-gnu/cmake/Qt5Network/Qt5NetworkConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\aarch64-linux-gnu\cmake\Qt5Network\"/>
+		</Unit>
+		<Unit filename="/home/sdi05/task01/HelloBT/../../../../usr/lib/aarch64-linux-gnu/cmake/Qt5Network/Qt5Network_QConnmanEnginePlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\aarch64-linux-gnu\cmake\Qt5Network\"/>
+		</Unit>
+		<Unit filename="/home/sdi05/task01/HelloBT/../../../../usr/lib/aarch64-linux-gnu/cmake/Qt5Network/Qt5Network_QGenericEnginePlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\aarch64-linux-gnu\cmake\Qt5Network\"/>
+		</Unit>
+		<Unit filename="/home/sdi05/task01/HelloBT/../../../../usr/lib/aarch64-linux-gnu/cmake/Qt5Network/Qt5Network_QNetworkManagerEnginePlugin.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\lib\aarch64-linux-gnu\cmake\Qt5Network\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="SDI_05 (8de76d79-934e-4d2a-b5ea-cf1303c9ac62)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/tmp/tmp.rbPfJ2MYLV" local="$PROJECT_DIR$" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug-sdi_05" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug-sdi_05" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

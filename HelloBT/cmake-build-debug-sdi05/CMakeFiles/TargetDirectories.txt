@@ -1,0 +1,4 @@
+/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05/CMakeFiles/rebuild_cache.dir
+/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05/CMakeFiles/edit_cache.dir
+/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05/CMakeFiles/HelloBt.dir
+/home/sdi05/task01/HelloBT/cmake-build-debug-sdi05/CMakeFiles/HelloBt_autogen.dir
