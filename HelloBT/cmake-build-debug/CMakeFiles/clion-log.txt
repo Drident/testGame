@@ -1,14 +1,14 @@
-"C:\Program Files\JetBrains\CLion 2023.1.1\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" -S C:\Users\chris\HES_SO\SDi\Task4\testGame\HelloBT -B C:\Users\chris\HES_SO\SDi\Task4\testGame\HelloBT\cmake-build-debug
+"C:\devel\CLion 2022.1.1\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" -S C:\Users\christop.grobety\testGame\HelloBT -B C:\Users\christop.grobety\testGame\HelloBT\cmake-build-debug
 -- The C compiler identification is GNU 11.2.0
 -- The CXX compiler identification is GNU 11.2.0
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
--- Check for working C compiler: C:/Program Files/JetBrains/CLion 2023.1.1/bin/mingw/bin/gcc.exe - skipped
+-- Check for working C compiler: C:/devel/CLion 2022.1.1/bin/mingw/bin/gcc.exe - skipped
 -- Detecting C compile features
 -- Detecting C compile features - done
 -- Detecting CXX compiler ABI info
 -- Detecting CXX compiler ABI info - done
--- Check for working CXX compiler: C:/Program Files/JetBrains/CLion 2023.1.1/bin/mingw/bin/g++.exe - skipped
+-- Check for working CXX compiler: C:/devel/CLion 2022.1.1/bin/mingw/bin/g++.exe - skipped
 -- Detecting CXX compile features
 -- Detecting CXX compile features - done
 CMake Warning at CMakeLists.txt:4 (find_package):
@@ -32,4 +32,4 @@ CMake Error at CMakeLists.txt:10 (find_program):
 
 
 -- Configuring incomplete, errors occurred!
-See also "C:/Users/chris/HES_SO/SDi/Task4/testGame/HelloBT/cmake-build-debug/CMakeFiles/CMakeOutput.log".
+See also "C:/Users/christop.grobety/testGame/HelloBT/cmake-build-debug/CMakeFiles/CMakeOutput.log".
